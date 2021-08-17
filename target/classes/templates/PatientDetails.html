@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Patient Details</title>
+</head>
+<body>
+	<div align="center">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>	
+		<br>
+		
+		<a href="addPatient">Add Patient</a>
+		
+		<br>
+		
+		<form th:action="@{/getPatientDetailsById}">
+			Search By Id:
+			<input type="number" name="patiendId"/>
+			&nbsp;
+			<input type="submit" value="Search"/>
+		</form>
+		
+		<br>
+		
+		<form th:action="@{/getPatientDetailsByName}">
+			Search By Name:
+			<input type="text" name="name"/>
+			&nbsp;
+			<input type="submit" value="Search"/>
+		</form>
+		
+		<table border="1">
+			<thead>
+				<tr>
+					<td> Patient Id </td>
+					<td> Patient Name </td>
+					<td> Address </td>
+					<td> Email </td>
+					<td> Actions </td>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="patient : ${patients}">
+					<td th:text="${patient.patiendId}"></td>
+					<td th:text="${patient.name}"></td>
+					<td th:text="${patient.address}"></td>
+					<td th:text="${patient.email}"></td>
+					<td><a th:href="@{'/editPatient/' + ${patient.patiendId}}">Edit</a>
+						&nbsp;
+						<a th:href="@{'/deletePatient/'+${patient.patiendId}}">Delete</a>
+					</td>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

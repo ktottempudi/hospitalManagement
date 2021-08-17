@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Details</title>
+</head>
+<body>
+	<div align="center">
+	
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
+		
+		<br/>
+		
+		<form th:action="@{/getUserById}">
+			Search By Id: 
+			<input type="number" name="employeeId" />
+			&nbsp;
+			<input type="submit" value="Search" />
+		</form>
+		
+		<table border="1">
+			<thead>
+				<tr>
+					<td> Employee Id </td>
+					<td> UserName </td>
+					<td> Password </td>
+					<td> Role </td>
+					<td> Actions </td>
+				</tr>
+			</thead>
+		
+			<tbody>
+				<tr th:each="credential : ${credentials}">
+					<td th:text="${credential.employeeId}"> </td>
+					<td th:text="${credential.userName}"> </td>
+					<td th:text="${credential.password}"> </td>
+					<td th:text="${credential.role}"> </td>
+					<td> <a th:href="@{'/editLogin/' + ${credential.employeeId}}">Edit</a> </td>
+				</tr>
+			</tbody>
+		</table>	
+	</div>
+</body>
+</html>

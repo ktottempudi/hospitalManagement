@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employees</title>
+</head>
+<body>
+<div align="center">
+
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Logout" />
+	</form>	
+	
+	<br/>
+	
+	<a href="addEmployee">Add Employee</a>
+	
+	<br/>
+	
+	<form th:action="@{/getEmployeeById}">
+		Search By Id:
+		<input type="number" name="employeeId" />
+		&nbsp;
+		<input type="submit" value="Search" />
+	</form>
+	
+	<br/>
+	
+	<form th:action="@{/getEmployeeByName}">
+		Search By Name:
+		<input type="text" name="name" />
+		&nbsp;
+		<input type="submit" value="Search" />
+	</form>
+	
+	<br/>
+	
+	<table border="1">
+		<thead>
+			<tr>
+				<td> Employee Id </td>
+				<td> Name </td>
+				<td> Job </td>
+				<td> Salary </td>
+				<td> Department </td>
+				<td> Actions </td>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="employee : ${employees}">
+				<td th:text="${employee.employeeId}"> </td>
+				<td th:text="${employee.name}"> </td>
+				<td th:text="${employee.job}"> </td>
+				<td th:text="${employee.salary}"> </td>
+				<td th:text="${employee.department}"> </td>
+				<td> <a th:href="@{'/edit/' + ${employee.employeeId}}"> Edit</a> 
+					&nbsp;	
+					<a th:href="@{'/deleteEmployee/' + ${employee.employeeId}}"> Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

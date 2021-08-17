@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Patient History</title>
+</head>
+<body>
+	<div align="center">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>	
+		
+		<form th:action="@{/getPreviousVisitsById}">
+			Search By Id;
+			<input type="number" name="patiendId"/>
+			&nbsp;
+			<input type="submit" value="Search"/>
+		</form>
+		
+		<br>
+		
+		<table border="1">
+			<thead>
+				<tr>
+					<td> Patient Id </td>
+					<td> Reasons for Visit </td>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="history : ${histories}">
+					<td th:text="${history.patientId}"></td>
+					<td th:text="${history.reasonForVisits}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

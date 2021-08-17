@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Login Information</title>
+</head>
+<body>
+	<div align="center">
+		<form th:action="@{/updateLogin}" th:object="${loginDetails}" method="post">
+			<table>
+				<tr>
+					<td> Employee Id </td>
+					<td> <input type="number" th:field="*{employeeId}" readonly="readonly" /> </td>
+				</tr>
+				
+				<tr>
+					<td> Employee UserName </td>
+					<td> <input type="text" th:field="*{userName}" /> </td>
+				</tr>
+				
+				<tr>
+					<td> Employee Encrypted Password </td>
+					<td> <input type="text" th:field="*{password}" /> </td>
+				</tr>
+				
+				<tr>
+					<td> Employee Role </td>
+					<td> <input type="text" th:field="*{role}" /> </td>
+				</tr>
+				
+				<tr>
+					<td> <input type="submit" value="Submit" /> </td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

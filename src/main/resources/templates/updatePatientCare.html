@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Patient Care</title>
+</head>
+<body>
+	<div align="center">
+		<form th:action="@{/updatePatientCare}" th:object="${patientCare}" method="post">
+			<table>
+				<tr>
+					<td> Patient Id </td>
+					<td><input type="number" th:field="*{patiendId}" readonly="readonly"/></td>
+				</tr>
+				
+				<tr>
+					<td> Medical Issue </td>
+					<td><input type="text" th:field="*{reason}"/></td>
+				</tr>
+				
+				<tr>
+					<td> Doctor Id </td>
+					<td><input type="number" th:field="*{doctorId}"/></td>
+				</tr>
+				
+				<tr>
+					<td><input type="submit" value="Submit"/></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
